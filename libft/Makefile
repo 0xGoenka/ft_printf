@@ -98,6 +98,8 @@ SRC =	ft_nu_len.c			\
 		ft_straddstr.c		\
 		ft_isletternum.c	\
 		ft_strisonly.c		\
+		ft_itos.c			\
+		ft_printnchar.c		\
 
 
 OBJECTS	= $(subst .c,.o,$(SRC))

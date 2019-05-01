@@ -6,7 +6,7 @@
 /*   By: eleclet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 17:54:22 by eleclet           #+#    #+#             */
-/*   Updated: 2019/04/29 20:52:37 by eleclet          ###   ########.fr       */
+/*   Updated: 2019/05/01 18:30:24 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int		main()
 {
 	
-	ft_printf("lallalaalal %s  %p  %d %d char == %c %% string == %s","TtripelPite",1, 2, 'Q', "SucePute");
+	ft_printf("%010d\n", -100);
+	printf("%010d", -100);
 	return (0);
 }
 
@@ -54,35 +55,64 @@ int		ft_printf(const char *format, ...)
 			}
 			if (*str == 'd' || *str == 'i')
 			{
-				ft_putnbr(va_arg(arg, int));
+				ft_itos(va_arg(arg, int),10,0);
 			}
 			if (*str == 'o') // Print octal
 			{
-				ft_putchar('i');
+				ft_itos(va_arg(arg, int), 8, 1);
 			}
 			if (*str == 'u') // unsigned decimal
 			{
-				ft_putchar('i'); 
+				ft_itos(va_arg(arg, unsigned int),10,1); 
 			}
 			if (*str == 'x') // Hexa abcdef
 			{
-				ft_putchar('i');
+				ft_itos(va_arg(arg, unsigned int), 16, 1);
 			}
 			if (*str == 'X') // hexa ABCDF
 			{
-				ft_putchar('i');
+				ft_itos(va_arg(arg, unsigned int), 16, 1);
 			}
 			if (*str == '.') // precision
 			{
 				
 			}
-			if (*str == 'number') // Width
-			if (*str == '#') // precede octal by 0 or hex by 0x
-			if (*str == '0') // followed by number padding with 0 
+			if (*str == '0') // Width
+			{
+				char *tmp = str;
+				char *str2;
+
+				while (ft_isdigit(*str))
+					str++;
+				int zeron = ft_atoi(ft_strndup(tmp,str - tmp));
+				int	ar = va_arg(arg, int);
+				if (ar < 0)
+				{
+					str2 = ft_itos(ar, 10,0);
+					zeron -= ft_strlen(str2) + 1;
+					ft_putchar('-');
+					ft_printnchar('0', zeron);
+					ft_putstr(str2+1);
+				}
+				else
+				{
+					str2 = ft_itos(ar, 10,0);
+					zeron -= ft_strlen(str2);
+					ft_printnchar('0', zeron);
+					ft_putstr(str2);
+				}
+
+
+
+
+			}
+			//if (*str == '#') // precede octal by 0 or hex by 0x
+			//if (*str == '0') // followed by number padding with 0 
+			str++;
 			
 		}
-		str++;
 		ft_putchar(*str);
+		str++;
 	}
 	va_end(arg);
 	
@@ -99,7 +129,7 @@ int		ft_printf(const char *format, ...)
 	return (0);
 }
 
-int	parser(char *str)
-{
+//int	parser(char *str)
+//{
 	
-}
+//}

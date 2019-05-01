@@ -6,7 +6,7 @@
 /*   By: eleclet <eleclet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 15:55:37 by eleclet           #+#    #+#             */
-/*   Updated: 2017/04/10 22:13:16 by eleclet          ###   ########.fr       */
+/*   Updated: 2019/05/01 17:33:56 by eleclet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ char				*ft_rot(size_t n, char *s);
 char				*ft_strupper(char *s);
 void				ft_load(int i);
 int					get_next_line(int fd, char **line);
+char				*ft_itos(long long int nbr, int base, int xupper);
+void				ft_printnchar(char c, int n);
 
 typedef struct		s_list
 {
